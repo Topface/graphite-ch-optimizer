@@ -1,3 +1,11 @@
+# Оптимизато для ClickHouse
+
+Данный имейдж запускает оптимизацию кликхауса и заставляет в старых partitions активировать роллапы. Форк понадобился в связи с изменением синтаксиса запросов SQL
+
+# История версий
+
+* hub.core.tf/graphite-ch-optimizer:1
+
 # Service to optimize stale GraphiteMergeTree tables
 When you use [GraphiteMergeTree](https://clickhouse.yandex/docs/en/operations/table_engines/graphitemergetree) in ClickHouse DBMS, it applies retention policies from `system.graphite_retentions` configuration during merge processes. Unfortunately, ClickHouse doesn't launch merges for partitions a) without active inserts or b) with only one part in. It means, that it never will watch for the actual retention scheme applied to partitions.  
 This software looking for tables with GraphiteMergeTree engine and evaluate if some of partitions should be optimized. It could work both as one-shot script and background daemon.
