@@ -377,7 +377,7 @@ func applyMerge(m *merge) error {
 	logrus.Infof("Going to merge TABLE %s PARTITION %s", m.table, m.partitionName)
 	_, err := cfg.ClickHouse.connect.Exec(
 		fmt.Sprintf(
-			"OPTIMIZE TABLE %s PARTITION ID '%s' FINAL",
+			"OPTIMIZE TABLE %s PARTITION '%s' FINAL",
 			m.table,
 			m.partitionID,
 		),
